@@ -1,0 +1,55 @@
+document.body.innerHTML = `
+<h1 class="heading_container">Pokemon Characters</h1>
+<div id="mainContainer" class="main-container">  </div> `;
+const poke_container=document.getElementById("mainContainer");
+
+
+const getData = async id => {
+    try {
+      const url=`https://pokeapi.co/api/v2/pokemon/${id}`;
+      const res=await fetch(url);
+      const pokemon=await res.json();
+      pokeCards(pokemon);
+      }
+    catch (error) {
+      console.error(error);
+    }
+  };
+getData(1);
+
+
+const totalpokemons=50;
+const fetchpokemons=async()=>{
+    for(let i=2; i<=totalpokemons; i++){
+        await getData(i);
+    }
+}
+fetchpokemons();
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon-Pokemon API</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
